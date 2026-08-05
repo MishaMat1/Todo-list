@@ -19,15 +19,12 @@ function App() {
   return (
     <div className="h-screen w-full bg-white flex flex-col overflow-hidden">
 
-      {/* Top Header */}
       <header className="h-15 shrink-0 w-full bg-[#4787B8] text-white flex items-center justify-center text-2xl font-semibold shadow-md">
         Awesome Todo
       </header>
 
-      {/* Everything below header */}
       <div className="flex flex-1 min-h-0">
 
-        {/* Desktop Sidebar */}
         <aside className="hidden md:flex w-75 shrink-0 h-full bg-[#4787B8] text-white flex-col">
 
           <div className="px-5 pt-5 pb-4 text-lg text-blue-100">
@@ -63,7 +60,6 @@ function App() {
           </nav>
         </aside>
 
-        {/* Main Content */}
         <main className="flex-1 min-w-0 min-h-0 overflow-auto bg-white p-5">
           {tab === "todo" ? (
             <Todo
@@ -84,7 +80,6 @@ function App() {
         </main>
       </div>
 
-      {/* Task Modal / Form */}
       {tab === "todo" && (
         <ManagingTasks
           setTasks={setTasks}
@@ -93,7 +88,6 @@ function App() {
         />
       )}
 
-      {/* Mobile Navigation */}
       <footer className="md:hidden flex justify-around text-white p-2.5 bg-[#4787B8] shrink-0">
         <button
           className="flex flex-col items-center"
