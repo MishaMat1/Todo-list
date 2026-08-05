@@ -35,6 +35,7 @@ export function ManagingTasks({ setTasks, taskToEdit, onCloseEdit }: ManagingTas
   const [dueTime, setDueTime] = useState('');
 
   const [isAddOpen, setIsAddOpen] = useState(false);
+  const [taskNameError, setTaskNameError] = useState(false);
 
   useEffect(() => {
     if (taskToEdit) {
@@ -57,7 +58,12 @@ export function ManagingTasks({ setTasks, taskToEdit, onCloseEdit }: ManagingTas
   };
 
   const handleSave = () => {
-    if (!taskName.trim() || !dueDate || !dueTime) return;
+    if (!taskName.trim()) {
+      setTaskNameError(true);
+      return;
+    }
+
+    setTaskNameError(false);
 
     if (taskToEdit) {
       setTasks((prev) =>
@@ -123,10 +129,24 @@ export function ManagingTasks({ setTasks, taskToEdit, onCloseEdit }: ManagingTas
             margin="dense"
             label="Task name"
             value={taskName}
-            onChange={(e) => setTaskName(e.target.value)}
+            onChange={(e) => {
+              setTaskName(e.target.value);
+
+              if (e.target.value.trim()) {
+                setTaskNameError(false);
+              }
+            }}
             type="text"
             fullWidth
             variant="outlined"
+            required
+            sx={{
+              '& .MuiFormLabel-asterisk': {
+                color: 'red',
+              },
+            }}
+            error={taskNameError}
+            helperText={taskNameError ? 'Task name is required' : ''}
           />
 
           <TextField

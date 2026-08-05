@@ -29,7 +29,7 @@ export function Settings({ use12Hour, setUse12Hour,
                         onChange={(e) => setUse12Hour(e.target.checked)} />
                 </div>
                 <div className='flex flex-row justify-between w-full items-center'>
-                    <h2>Show tasks in none list</h2>
+                    <h2>Show tasks in one list</h2>
                     <Switch checked={showEmptyLists}
                         onChange={(e) => setShowEmptyLists(e.target.checked)} />
                 </div>
